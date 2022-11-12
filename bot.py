@@ -1,6 +1,6 @@
 import telebot, os, requests, validators, math, re, collections
 from telebot import types
-bot = telebot.TeleBot('5604918525:AAEGJil1o2cwvx6AlVobkb51d362wkleztc')
+bot = telebot.TeleBot('')
 
 status = ''
 start_message = str('Введите команду:' + '\n'
