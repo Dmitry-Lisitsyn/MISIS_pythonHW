@@ -1,7 +1,10 @@
 import telebot, os, requests, validators, math, re, collections
 from telebot import types
-bot = telebot.TeleBot('')
-
+bot = telebot.TeleBot('5604918525:AAEGJil1o2cwvx6AlVobkb51d362wkleztc')
+predlogs = ["без","за","близ","в","ввиду","вне","для","до","за",
+"из","из-за","к","ко","кроме","на","над","от","перед","по","под",
+"при","пред","с","кто","как", "когда","который","какой","где","куда",
+"откуда","и", "ни-ни", "тоже", "также", "а", "но", "однако", "зато", "же", "или", "либо", "то-то", "у", "о", "об"]
 status = ''
 start_message = str('Введите команду:' + '\n'
 + '/site - проверить доступность сайта' + '\n' 
@@ -102,9 +105,14 @@ def start_textAnalyst(message):
         text = re.sub(r'[^\w\s]','', text.lower())
         words = text.split()
 
-        counter_words = collections.Counter(words)
+        clear_words = []
+        for word in words:
+            if word not in predlogs:
+                clear_words.append(word)
+
+        counter_words = collections.Counter(clear_words)
         common_words = counter_words.most_common()[:3]
-        longest_word = max(words, key=len)
+        longest_word = max(clear_words, key=len)
         
         bot.send_message(message.chat.id, 
         'Количество предложений: ' + str(sentences_length) + '\n' +
@@ -115,6 +123,7 @@ def start_textAnalyst(message):
         str(common_words[2]) + '\n' +
         'Самое длинное: ' + str(longest_word)
         )
+        bot.send_message(message.chat.id, "Введите текст:")
     except:
         bot.send_message(message.chat.id, "Ошибка анализа текста! Введите другой.")
 
