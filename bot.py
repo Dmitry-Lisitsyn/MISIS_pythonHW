@@ -1,6 +1,6 @@
 import telebot, os, requests, validators, math, re, collections
 from telebot import types
-bot = telebot.TeleBot('5604918525:AAEGJil1o2cwvx6AlVobkb51d362wkleztc')
+bot = telebot.TeleBot('')
 predlogs = ["без","за","близ","в","ввиду","вне","для","до","за",
 "из","из-за","к","ко","кроме","на","над","от","перед","по","под",
 "при","пред","с","кто","как", "когда","который","какой","где","куда",
